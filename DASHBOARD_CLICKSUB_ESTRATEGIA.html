@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClickSub — Arquitetura Estratégica do Dashboard</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a31;
+      --panel-2: #0f172a;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --primary: #4f46e5;
+      --secondary: #06b6d4;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --border: #26324f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top right, #1a2450 0, var(--bg) 45%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+
+    header {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(160deg, #131f3e, #10192f);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 5vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #cbd5e1;
+      background: rgba(79, 70, 229, 0.12);
+    }
+
+    .section {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.92);
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      border-left: 4px solid var(--secondary);
+      padding-left: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 17px;
+      color: #dbeafe;
+    }
+
+    p {
+      margin: 8px 0;
+      color: #d1d5db;
+    }
+
+    ul, ol {
+      margin: 8px 0 12px 20px;
+      color: #d1d5db;
+    }
+
+    li { margin: 4px 0; }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin-top: 10px;
+    }
+
+    .kpi {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel);
+      padding: 12px;
+      font-size: 14px;
+      color: #dbeafe;
+    }
+
+    .callout {
+      border-left: 4px solid var(--primary);
+      background: rgba(79, 70, 229, 0.12);
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: #c7d2fe;
+      margin: 10px 0;
+    }
+
+    .phase {
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 8px;
+      background: rgba(18, 26, 49, 0.7);
+    }
+
+    footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .success { color: var(--success); }
+    .warning { color: var(--warning); }
+    .danger { color: var(--danger); }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Arquitetura Estratégica do Dashboard — ClickSub</h1>
+      <p class="subtitle">Documento em HTML para visualização rápida da estratégia de UX, growth e monetização do SaaS.</p>
+      <div class="chip-row">
+        <span class="chip">Growth Dashboard</span>
+        <span class="chip">UX/UI Premium</span>
+        <span class="chip">YouTube Creators</span>
+        <span class="chip">Conversão de Créditos</span>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>1) Estrutura completa do Dashboard</h2>
+      <h3>Princípios de arquitetura</h3>
+      <ul>
+        <li><strong>North Star:</strong> aumentar sessões úteis de IA por usuário por semana.</li>
+        <li><strong>Primeiro valor &lt; 3 min:</strong> levar o usuário ao primeiro insight aplicável rapidamente.</li>
+        <li><strong>Monetização sem fricção:</strong> compra de créditos no contexto de valor.</li>
+        <li><strong>Visibilidade de progresso:</strong> clareza sobre “o que fazer agora”.</li>
+      </ul>
+
+      <h3>Layout geral</h3>
+      <ul>
+        <li><strong>Topbar fixa:</strong> busca global, saldo, CTA comprar créditos, notificações e conta.</li>
+        <li><strong>Sidebar:</strong> Dashboard, IA Studio, Conteúdo, Títulos/Thumbnails, SEO, Histórico, Créditos e Configurações.</li>
+        <li><strong>Main grid 12 colunas:</strong> KPIs, insights IA, funil de monetização e atalhos acionáveis.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>2) Componentes estratégicos</h2>
+      <h3>KPIs principais</h3>
+      <div class="grid">
+        <div class="kpi">Créditos disponíveis + badge de risco</div>
+        <div class="kpi">Mensagens IA (7 dias)</div>
+        <div class="kpi">Sessões produtivas</div>
+        <div class="kpi">Retorno semanal (WAU/MAU)</div>
+        <div class="kpi">Outputs gerados</div>
+        <div class="kpi">Conversão para recarga</div>
+      </div>
+      <h3>CTAs por contexto</h3>
+      <ul>
+        <li><span class="warning">Crédito baixo (&lt;20%)</span>: “Recarregar agora com prioridade de análise”.</li>
+        <li>Pós-output útil: “Gerar mais 5 variações (1 crédito)”.</li>
+        <li>Após 3 sessões no dia: “Ativar modo Sprint de Conteúdo”.</li>
+        <li><span class="danger">Saldo 0</span>: paywall contextual com proposta de valor clara.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>3) Fluxo do usuário</h2>
+      <h3>Primeiro acesso</h3>
+      <ol>
+        <li>Cadastro/login</li>
+        <li>Quiz rápido de nicho, estágio e objetivo</li>
+        <li>Templates iniciais</li>
+        <li>Primeiro prompt assistido</li>
+        <li>Primeiro resultado salvo</li>
+      </ol>
+
+      <h3>Uso do chat</h3>
+      <ol>
+        <li>Entra no IA Studio e vê créditos/custo por mensagem</li>
+        <li>Envia prompt</li>
+        <li>Loading com microfeedback</li>
+        <li>Resposta em blocos + ações rápidas (copiar/salvar/variar)</li>
+      </ol>
+
+      <h3>Fim de créditos e upgrade</h3>
+      <ol>
+        <li>Tenta enviar com saldo 0</li>
+        <li>Intercept elegante com modal de upgrade</li>
+        <li>Escolhe pack, faz PIX, envia comprovante</li>
+        <li>Validação e liberação automática</li>
+        <li><span class="success">Retorno direto ao chat sem perder contexto</span></li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>4) UX para aumentar compra de créditos</h2>
+      <ul>
+        <li>Ancoragem de pacote (decoy) + economia por crédito.</li>
+        <li>Alerta preditivo antes do bloqueio (5 créditos restantes).</li>
+        <li>Recarga com retorno ao ponto exato da conversa.</li>
+        <li>Redução de fricção no PIX: drag-and-drop, checklist, status com ETA.</li>
+      </ul>
+      <div class="callout">
+        Estratégia central: monetizar no momento de alta intenção criativa, não apenas no bloqueio.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>5) Estrutura visual moderna</h2>
+      <ul>
+        <li><strong>Paleta:</strong> #4F46E5, #06B6D4, #10B981, #F59E0B, #EF4444, neutros dark/light.</li>
+        <li><strong>Tipografia:</strong> Inter/Söhne/SF Pro com escala clara para dashboards.</li>
+        <li><strong>Referências:</strong> Linear, Stripe Dashboard, Notion e Vercel.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>6) Microinterações & Gamificação</h2>
+      <ul>
+        <li>Skeleton loading contextual, barra animada de créditos, toast de progresso.</li>
+        <li>Streak de produção, missões semanais, badges funcionais, creator level.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>7) Métricas internas de growth</h2>
+      <ul>
+        <li>Aquisição/ativação: cadastro → primeiro prompt, TTV, onboarding completo.</li>
+        <li>Engajamento: mensagens/semana, sessões produtivas, D1/D7/D30.</li>
+        <li>Monetização: compra inicial, conversão no paywall, ARPPU, recompra.</li>
+        <li>Operação: tempo de validação PIX, fraude/duplicidade, erro de chat, latência IA.</li>
+      </ul>
+
+      <h3>Blueprint 90 dias</h3>
+      <div class="phase"><strong>Fase 1:</strong> Base de conversão (home, chat robusto, paywall contextual, pagamento com status).</div>
+      <div class="phase"><strong>Fase 2:</strong> Aceleração (insights IA, missões, recomendação de pacote, resumo semanal).</div>
+      <div class="phase"><strong>Fase 3:</strong> Escala (segmentação comportamental, A/B de paywall/pricing, risco de churn).</div>
+    </section>
+
+    <footer>
+      Arquivo gerado para visualização em navegador: <strong>DASHBOARD_CLICKSUB_ESTRATEGIA.html</strong>
+    </footer>
+  </main>
+</body>
+</html>
