@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClickSub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>ClickSub</h1>
+        <p>Gere roteiros virais para TikTok, Reels e Shorts.</p>
+      </header>
+
+      <section class="card" id="auth-card">
+        <h2>Entrar / Criar conta</h2>
+        <form id="auth-form">
+          <input id="email" type="email" placeholder="Seu email" required />
+          <input id="password" type="password" placeholder="Sua senha" required minlength="6" />
+          <div class="row">
+            <button type="button" id="signup-btn">Criar conta</button>
+            <button type="button" id="login-btn">Login</button>
+          </div>
+        </form>
+        <p id="auth-message" class="message"></p>
+      </section>
+
+      <section class="card hidden" id="app-card">
+        <div class="topbar">
+          <span id="user-email"></span>
+          <button id="logout-btn" class="ghost">Sair</button>
+        </div>
+
+        <div class="credits">
+          Créditos restantes: <strong id="credits">-</strong>
+        </div>
+
+        <form id="script-form">
+          <label for="idea">Ideia de vídeo</label>
+          <textarea id="idea" placeholder="Ex.: 3 erros que travam seu crescimento no Instagram" required></textarea>
+
+          <label for="inspiration">Link de inspiração (opcional)</label>
+          <input id="inspiration" type="url" placeholder="https://..." />
+
+          <button type="submit" id="generate-btn">Gerar roteiro (1 crédito)</button>
+        </form>
+
+        <p id="script-message" class="message"></p>
+
+        <article class="result hidden" id="result">
+          <h3>Roteiro gerado</h3>
+          <div>
+            <h4>Hook</h4>
+            <p id="hook"></p>
+          </div>
+          <div>
+            <h4>Desenvolvimento</h4>
+            <p id="development"></p>
+          </div>
+          <div>
+            <h4>CTA</h4>
+            <p id="cta"></p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
